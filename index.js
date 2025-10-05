@@ -23,17 +23,6 @@ import { createPages, createLayout } from './lib/templates.js';
     if (input !== input.toLowerCase()) {
       return chalk.red.bold("Project name must be in lowercase.");
     }
-    if (input === ".") {
-      const files = fs.readdirSync(process.cwd());
-      if (files.length > 0) {
-        return chalk.red.bold("The current directory is not empty. Please use a different project name.");
-      }
-    } else {
-      if (fs.existsSync(input)) {
-        return chalk.red.bold(`A directory named "${chalk.white(input)}" already exists. Please use a different project name.`);
-      }
-    }
-    return true;
   };
 
   const appName = process.argv[2];
